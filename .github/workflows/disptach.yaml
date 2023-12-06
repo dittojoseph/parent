@@ -1,0 +1,32 @@
+
+name:  Dispatch CiCD
+on:
+  workflow_dispatch:
+    branches:
+      - master
+jobs:
+  trigger_workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Echo Workflow name
+
+        shell: bash
+
+        run: |
+
+          echo "I am Workflow of Parent REPO"
+
+      - name: Trigger child repo 
+
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          repository: dittojoseph/scripted-pipeline-demo
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          client-payload: |-
+            {
+              "repo": {
+                "branch": "${{ needs.build_cfg.outputs.master }}",
+              }
+            }

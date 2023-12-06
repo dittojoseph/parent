@@ -16,6 +16,6 @@ jobs:
           -H "Accept: application/vnd.github.everest-preview+json" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
           
-          -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+          -H "Authorization: Bearer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 " \
 
           -d '{"ref": "master"}

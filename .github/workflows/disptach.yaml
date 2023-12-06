@@ -24,9 +24,5 @@ jobs:
         with:
           repository: dittojoseph/scripted-pipeline-demo
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          client-payload: |-
-            {
-              "repo": {
-                "branch": "${{ needs.build_cfg.outputs.master }}",
-              }
-            }
+
+

@@ -24,5 +24,7 @@ jobs:
         with:
           repository: dittojoseph/scripted-pipeline-demo
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          event-type: my-event
+         
 
 

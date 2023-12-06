@@ -1,4 +1,4 @@
-name:  Parent CI?CD
+name:  API CICD
 on:
   workflow_dispatch:
     branches:

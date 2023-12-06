@@ -19,10 +19,9 @@ jobs:
 
       - name: Trigger child repo 
 
-        uses: peter-evans/repository-dispatch@v2
+        uses: rshop/trigger-workflow-action@v1
         with:
-          repository: dittojoseph/scripted-pipeline-demo
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          event-type: my-event
-          workflow: deploy.yaml
-          ref: test
+          repository: 'dittojoseph/scripted-pipeline-demo'
+          workflowId: deploy.yaml
+          branch: test

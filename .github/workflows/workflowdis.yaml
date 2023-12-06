@@ -1,4 +1,4 @@
-name:  API CICD
+name:  Parent CI?CD
 on:
   workflow_dispatch:
     branches:
@@ -17,14 +17,14 @@ jobs:
 
           echo "I am Workflow of Parent REPO"
 
-      - name: Trigger child repo 
+      - name: Trigger workflow file
         uses: actions/github-script@v6
         with:
-            github-token: ${{ secrets.PAT }} # Fine-grained GitHub PAT that was saved as repository secret
-            script: |
+        github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        script: |
             await github.rest.actions.createworkflowDispatch({
                 owner: 'dittojoseph',
                 repo: 'scripted-pipeline-demo',
-                workflow_id: 'deploy.yaml',
+                workflow_id: 'deploy.yml',
                 ref: 'master'
             }) 

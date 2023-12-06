@@ -1,5 +1,5 @@
 
-name:  Parent CI?CD
+name:  EKS CICD
 on:
   workflow_dispatch:
     branches:

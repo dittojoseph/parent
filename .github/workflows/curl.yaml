@@ -1,27 +1,28 @@
-name: Trigger
-
+name:  curl CiCD
 on:
   workflow_dispatch:
-    inputs:
-      repository:  
-        description: 'scripted-pipeline-demoscripted-pipeline-demo'
-        required: true
-      workflow: 
-        description: 'deploy.yaml'
-        required: true
-      ref:         
-        description: 'master'
-        required: true
-
+    branches:
+      - master
 jobs:
-  trigger-workflow:
+  trigger_workflow:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Trigger Workflow
-      uses: peter-evans/repository-dispatch@v2
-      with:
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # Personal Access Token with workflow scope
-        repository: ${{ github.event.inputs.repository }}
-        workflow: ${{ github.event.inputs.workflow }}
-        ref: ${{ github.event.inputs.ref }}
+
+      - name: Echo Workflow name
+
+        shell: bash
+
+        run: |
+
+          echo "I am Workflow of Parent REPO"
+
+      - name: Trigger child repo 
+
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          repository: dittojoseph/scripted-pipeline-demo
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          event-type: my-event
+          workflow: deploy.yaml
+          ref: master

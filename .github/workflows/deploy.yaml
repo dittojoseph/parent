@@ -28,7 +28,7 @@ jobs:
           github_user: github-user
           workflow_file_name: deploy.yaml
           ref: master
-          wait_interval: 5
+          wait_interval: 10
           propagate_failure: false
           trigger_workflow: true
           wait_workflow: true

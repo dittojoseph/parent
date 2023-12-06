@@ -9,14 +9,6 @@ jobs:
 
     steps:
 
-      - name: Echo Workflow name
-
-        shell: bash
-
-        run: |
-
-          echo "I am Workflow of Parent REPO"
-
       - name: Trigger workflow file
         uses: actions/github-script@v6
         with:

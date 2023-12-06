@@ -1,0 +1,34 @@
+
+name:  Parent CI?CD
+on:
+  workflow_dispatch:
+    branches:
+      - master
+jobs:
+  trigger_workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Echo Workflow name
+
+        shell: bash
+
+        run: |
+
+          echo "I am Workflow of Parent REPO"
+
+      - name: Trigger child repo 
+
+        uses: convictional/trigger-workflow-and-wait@v1.6.1
+        with:
+          owner: dittojoseph
+          repo: scripted-pipeline-demo
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          github_user: github-user
+          workflow_file_name: deploy.yaml
+          ref: master
+          wait_interval: 5
+          propagate_failure: false
+          trigger_workflow: true
+          wait_workflow: true

@@ -3,14 +3,14 @@ name: Trigger
 on:
   workflow_dispatch:
     inputs:
-      repository:  scripted-pipeline-demoscripted-pipeline-demo
-        description: 'Target repository name'
+      repository:  
+        description: 'scripted-pipeline-demoscripted-pipeline-demo'
         required: true
-      workflow:    deploy.yaml
-        description: 'Target workflow name'
+      workflow: 
+        description: 'deploy.yaml'
         required: true
-      ref:         master
-        description: 'Branch or tag name'
+      ref:         
+        description: 'master'
         required: true
 
 jobs:

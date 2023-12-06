@@ -1,0 +1,27 @@
+name: Trigger
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:  scripted-pipeline-demoscripted-pipeline-demo
+        description: 'Target repository name'
+        required: true
+      workflow:    deploy.yaml
+        description: 'Target workflow name'
+        required: true
+      ref:         master
+        description: 'Branch or tag name'
+        required: true
+
+jobs:
+  trigger-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Trigger Workflow
+      uses: peter-evans/repository-dispatch@v2
+      with:
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # Personal Access Token with workflow scope
+        repository: ${{ github.event.inputs.repository }}
+        workflow: ${{ github.event.inputs.workflow }}
+        ref: ${{ github.event.inputs.ref }}

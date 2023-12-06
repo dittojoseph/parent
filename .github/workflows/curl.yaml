@@ -25,4 +25,4 @@ jobs:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           event-type: my-event
           workflow: deploy.yaml
-          ref: master
+          ref: test

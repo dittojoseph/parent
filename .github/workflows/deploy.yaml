@@ -30,4 +30,4 @@ jobs:
           wait_interval: 20
           propagate_failure: true
           workflow_file_name: deploy.yaml
-          ref: master
+          ref: test
